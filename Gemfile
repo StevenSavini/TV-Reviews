@@ -18,6 +18,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'foundation-rails'
 
+
+gem 'devise'
+
 group :test do
   gem 'coveralls', require: false
 end
@@ -30,10 +33,6 @@ group :development, :test do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
-end
-
-group :test do
-  gem 'coveralls', require: false
 end
 
 group :development do
