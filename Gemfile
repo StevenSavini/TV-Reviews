@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
@@ -18,10 +17,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'foundation-rails'
 
-group :test do
-  gem 'coveralls', require: false
-end
-
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -30,6 +25,8 @@ group :development, :test do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :test do
