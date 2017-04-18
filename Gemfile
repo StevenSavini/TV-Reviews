@@ -13,7 +13,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 
-
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 
@@ -31,6 +30,10 @@ group :development, :test do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
+end
+
+group :test do
+  gem 'coveralls', require: false
 end
 
 group :development do
