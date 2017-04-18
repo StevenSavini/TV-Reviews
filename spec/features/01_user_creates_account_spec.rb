@@ -20,12 +20,12 @@ feature "user creates account" do
   scenario "fills in account details in form and submits details" do
     visit users_new_path
 
-    fill_in('First Name', :with => 'John')
-    fill_in('Last Name', :with => 'Doe')
-    fill_in('Username', :with => 'jdoe')
-    fill_in('Password', :with => 'password123')
-    fill_in('Email Address', :with => 'jdoe@email.com')
-    fill_in('Profile Picture URL', :with => Faker::Avatar.image)
+    fill_in('First Name', with: 'John')
+    fill_in('Last Name', with: 'Doe')
+    fill_in('Username', with: 'jdoe')
+    fill_in('Password', with: 'password123')
+    fill_in('Email Address', with: 'jdoe@email.com')
+    fill_in('Profile Picture URL', with: Faker::Avatar.image)
 
     click_button "Submit"
 
