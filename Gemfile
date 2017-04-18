@@ -17,6 +17,12 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'foundation-rails'
 
+gem 'devise'
+
+group :test do
+  gem 'coveralls', require: false
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -27,10 +33,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
   gem 'faker'
-end
-
-group :test do
-  gem 'coveralls', require: false
 end
 
 group :development do
