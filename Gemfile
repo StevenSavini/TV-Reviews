@@ -18,6 +18,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'foundation-rails'
 
+group :test do
+  gem 'coveralls', require: false
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
