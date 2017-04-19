@@ -27,7 +27,6 @@ feature "user creates account" do
     fill_in('Reenter Password', with: 'password123')
     fill_in('Email', with: 'jdoe@email.com')
 
-
     click_button "Sign up"
 
     expect(page).to have_content("Welcome! You have signed up successfully.")
