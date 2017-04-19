@@ -3,7 +3,8 @@ require 'rails_helper'
 # Acceptance Criteria
 # [ ] I want to see a link to log in from the index page
 # [ ] I want fields to enter my log in information
-# [ ] Once I have entered my information, I want to click the log in button and be signed in to the home page
+# [ ] Once I have entered my information, I want to click the log in button and
+#     be signed in to the home page
 
 feature "user signs in" do
   let(:user) { FactoryGirl.create(:user) }
@@ -17,7 +18,8 @@ feature "user signs in" do
     expect(current_path).to eq '/users/sign_in'
   end
 
-  scenario "fills in account details with username and password and submits details" do
+  scenario "fills in account details with username and password and submits
+            details" do
     visit new_user_session_path
 
     fill_in('Username or email', with: user.username)
@@ -29,7 +31,8 @@ feature "user signs in" do
     expect(current_path).to eq '/'
   end
 
-  scenario "fills in account details with email and password and submits details" do
+  scenario "fills in account details with email and password and submits
+            details" do
     visit new_user_session_path
 
     fill_in('Username or email', with: user.email)
