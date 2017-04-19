@@ -33,6 +33,8 @@ group :development, :test do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :development do
