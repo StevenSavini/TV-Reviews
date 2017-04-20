@@ -1,10 +1,14 @@
 require 'coveralls'
-Coveralls.wear!('rails')
-
 require 'database_cleaner'
+require 'warden'
+require 'devise'
+Coveralls.wear!('rails')
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+  config.include Warden::Test::Helpers
+  config.include Devise::TestHelpers, :type => :controller
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -27,5 +31,6 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Warden.test_reset!
   end
 end

@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe "validations" do
+    subject { FactoryGirl.create(:user) }
+    it { should validate_uniqueness_of(:username) }
+    it { should validate_uniqueness_of(:email).case_insensitive }
+  end
+
   it { should have_valid(:first_name).when("Bruce") }
   it { should_not have_valid(:first_name).when(nil, "") }
 

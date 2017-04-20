@@ -12,7 +12,7 @@ feature "user signs in" do
   scenario "sees and clicks on Sign In button from main page" do
     visit shows_path
 
-    click_link "Sign In"
+    click_link "Sign in"
 
     expect(page).to have_content("Log in")
     expect(current_path).to eq '/users/sign_in'
@@ -29,6 +29,8 @@ feature "user signs in" do
 
     expect(page).to have_content("Signed in successfully.")
     expect(current_path).to eq '/'
+    expect(page).to_not have_content("Sign in")
+    expect(page).to_not have_content("Create Account")
   end
 
   scenario "fills in account details with email and password and submits
@@ -42,6 +44,8 @@ feature "user signs in" do
 
     expect(page).to have_content("Signed in successfully.")
     expect(current_path).to eq '/'
+    expect(page).to_not have_content("Sign in")
+    expect(page).to_not have_content("Create Account")
   end
 
   scenario "fills in bad details in form and submits details" do
