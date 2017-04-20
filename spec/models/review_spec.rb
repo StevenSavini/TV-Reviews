@@ -23,7 +23,7 @@ feature "visitor sees list of reviews on show page" do
     user = FactoryGirl.create(:user)
 
     game_of_thrones = Show.create(
-      title: 'Game of Thrones', description: 'awesome HBO show',
+      title: "Game of Thrones", description: "awesome HBO show",
       average_rating: 5
       )
 
