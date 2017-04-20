@@ -8,7 +8,7 @@ Coveralls.wear!('rails')
 RSpec.configure do |config|
 
   config.include Warden::Test::Helpers
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, type: :controller
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

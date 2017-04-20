@@ -3,7 +3,8 @@ require 'rails_helper'
 # Acceptance Criteria
 # [ ] If I am signed in, I want to see a link to sign out
 # [ ] If I click link to sign out, I am logged out of app
-# [ ] Once logged out of app, I see a message telling me I successfully logged and sent to home page
+# [ ] Once logged out of app, I see a message telling me I successfully logged
+#     and sent to home page
 
 feature "user logs out of account" do
 
