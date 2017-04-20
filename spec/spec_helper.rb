@@ -2,6 +2,9 @@ require 'coveralls'
 require 'database_cleaner'
 require 'warden'
 require 'devise'
+require 'selenium-webdriver'
+require 'capybara'
+
 Coveralls.wear!('rails')
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
@@ -34,3 +37,9 @@ RSpec.configure do |config|
     Warden.test_reset!
   end
 end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.javascript_driver = :chrome
