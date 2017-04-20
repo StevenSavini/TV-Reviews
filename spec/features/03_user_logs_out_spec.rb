@@ -9,7 +9,7 @@ feature "user logs out of account" do
 
   before(:each) do
     user = FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
   end
 
   scenario "sees and clicks on log out button from any page" do
