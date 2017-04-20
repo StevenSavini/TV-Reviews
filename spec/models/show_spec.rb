@@ -12,7 +12,7 @@ feature "visitors can see a list of shows on homepage" do
       title: 'Californication',
       description: 'awesome Showtime show',
       average_rating: 5
-      )
+                                  )
 
     visit root_path
 
@@ -31,7 +31,7 @@ feature "visitors can see the shows name, description, and rating" do
       title: 'Game of Thrones',
       description: 'awesome HBO show',
       average_rating: 5
-      )
+                                  )
 
     visit show_path(game_of_thrones)
 
@@ -48,7 +48,7 @@ feature "visitors can click on show title and be redirected to show page" do
       title: 'Game of Thrones',
       description: 'awesome HBO show',
       average_rating: 5
-      )
+                                  )
 
     visit root_path
 
