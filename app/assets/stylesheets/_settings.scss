@@ -57,14 +57,15 @@ $foundation-palette: (
   alert: #cc4b37,
 );
 $dark-blue: #265673;
+$light-blue: #85defc;
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #000000;
 $white: #fefefe;
-$body-background: $black;
-$body-font-color: $dark-blue;
-$body-font-family: "Old Standard TT";
+$body-background: #222;
+$body-font-color: $medium-gray;
+$body-font-family: "Old Standard TT", Helvetica;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -345,7 +346,7 @@ $dropdown-sizes: (
 $dropdownmenu-arrows: true;
 $dropdownmenu-arrow-color: $anchor-color;
 $dropdownmenu-arrow-size: 6px;
-$dropdownmenu-min-width: 200px;
+$dropdownmenu-min-width: 100px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
 
@@ -614,7 +615,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: $light-gray;
+$topbar-background: $dark-gray;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;

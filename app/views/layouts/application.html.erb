@@ -13,17 +13,30 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <%= link_to 'Sign out', destroy_user_session_path, class: "button", method: "delete" %>
-    <% else %>
-      <%= link_to 'Create Account', new_user_registration_path, class: "button" %>
-      <%= link_to 'Sign in', new_user_session_path, class: "button" %>
-    <% end %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-
+    <div class="top-bar">
+ +      <div class="top-bar-title"> <%= link_to "TV Reviews", root_path %></div>
+ +        <div>
+ +          <div class="top-bar-left"></div>
+ +          <div class="top-bar-right">
+ +            <ul class="dropdown menu" data-dropdown-menu>
+ +              <% if current_user %>
+ +                <li class="menu-text">
+ +                  <%= "#{current_user.username}" %>
+ +                  <ul class="menu vertical">
+ +                    <li><%= link_to "Profile", user_path(current_user) %></li>
+ +                    <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
+ +                  </ul>
+ +                </li>
+ +              <% else %>
+ +                <li><%= link_to 'Create Account', new_user_registration_path, class: "button" %></li>
+ +                <li><%= link_to 'Sign in', new_user_session_path, class: "button" %></li>
+ +              <% end %>
+ +            </ul>
+ +          </div>
+ +        </div>
+ +    </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     <%= yield %>
 
   </body>
