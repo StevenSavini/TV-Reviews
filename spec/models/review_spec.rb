@@ -4,12 +4,12 @@ feature "visitor sees list of reviews on show page" do
   scenario "sees reviews for specific show" do
     user = FactoryGirl.create(:user)
 
-    game_of_thrones = Show.create
-      (title: "Game of Thrones",
+    game_of_thrones = Show.create(
+      title: "Game of Thrones",
       description: "awesome HBO show", average_rating: 5)
 
-    review_for_thrones = Review.create
-      (title: "The deaths hit you right in the feels",
+    review_for_thrones = Review.create(
+      title: "The deaths hit you right in the feels",
       description: "Hodor", rating: 5, show: game_of_thrones, user: user)
 
     visit show_path(game_of_thrones)
