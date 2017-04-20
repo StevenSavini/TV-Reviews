@@ -1,9 +1,9 @@
 @import "settings";
 
 .profile {
+  background-color: $black;
   border: 5px solid $light-gray;
   border-radius: 2rem;
-  background-color: $black;
 }
 
 .infopanel {

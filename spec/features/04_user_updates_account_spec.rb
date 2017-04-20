@@ -2,10 +2,14 @@ require 'rails_helper'
 
 # Acceptance Criteria
 # [ ] If I am unauthenticated I should not have a profile page
-# [ ] If I am an authenticated user, I want to be able to navigate to my profile page
-# [ ] As an authenticated user, I want to be able to edit my profile information from my profile page
-# [ ] As an authenticated user, after I have edited my profile information, I want to be able to use the new informaton to access my account
-# [ ] As an authenticated user, I want to be able to change my password from my profile page
+# [ ] If I am an authenticated user, I want to be able to navigate to my profile
+#     page
+# [ ] As an authenticated user, I want to be able to edit my profile information
+#     from my profile page
+# [ ] As an authenticated user, after I have edited my profile information, I
+#     want to be able to use the new informaton to access my account
+# [ ] As an authenticated user, I want to be able to change my password from my
+#     profile page
 
 feature "user updates account" do
   before(:each) do
@@ -68,7 +72,8 @@ feature "user updates account" do
 
     click_button "Update"
 
-    expect(page).to have_content "4 errors prohibited this user from being saved"
+    expect(page).to have_content "4 errors prohibited this user from being
+                                  saved"
   end
 
   scenario "logs in with new profile details" do
