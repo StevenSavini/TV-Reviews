@@ -1,14 +1,19 @@
 <h1>Must Watch TV Shows</h1>
 
-<ul>
-<% @shows.each do |show| %>
-  <li>
-    <%= link_to show.title, show_path(show) %>
-    <br>
-    <h3>Show Description: <%=  show.description %> </h3>
-    <br>
-    <h3>Average Rating: <%=  show.average_rating %> </h3>  </li>
-<% end %>
-</ul>
+<div class="row">
+  <% @shows.each do |show| %>
+    <div class="small-3 columns">
+      <div class"show-card">
+        <div class="card-divider">
+          <h3><%= link_to show.title, show_path(show) %></h3>
+        </div>
+        <div class="card-section">
+          <p>Show Description: <%=  show.description %> </p>
+          <p>Average Rating: <%=  show.average_rating %> </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to "Add New Show", new_show_path %>
