@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Show.create(title: 'Game of Thrones', description: 'awesome HBO show', average_rating: 5)
+Show.create(title: 'Californication', description: 'awesome Showtime show', average_rating: 5)

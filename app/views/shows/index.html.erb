@@ -1,0 +1,14 @@
+<h1>Must Watch TV Shows</h1>
+
+<ul>
+<% @shows.each do |show| %>
+  <li>
+    <%= link_to show.title, show_path(show) %>
+    <br>
+    <h3>Show Description: <%=  show.description %> </h3>
+    <br>
+    <h3>Average Rating: <%=  show.average_rating %> </h3>  </li>
+<% end %>
+</ul>
+
+<%= link_to "Add New Show", new_show_path %>
