@@ -26,8 +26,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'chromedriver-helper'
-  gem 'selenium-webdriver'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
