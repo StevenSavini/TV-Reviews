@@ -1,0 +1,18 @@
+<div class="row small-4 columns infopanel">
+  <div class="small-12 large-6 columns">
+    <div class="row">
+      <img src="<%=@user.avatar_url%>" alt="avatar_url" class="profile">
+    </div>
+    <div class="row buttonrow">
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "button" %>
+    </div>
+  </div>
+  <div class="small-12 large-6 columns">
+    <h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
+    <ul class="details">
+      <li><strong>Username</strong> <%= @user.username %></li>
+      <li><strong>Name</strong> <%= @user.first_name %> <%= @user.last_name %></li>
+      <li><strong>Email</strong> <%= @user.email %></li>
+    </ul>
+  </div>
+</div>

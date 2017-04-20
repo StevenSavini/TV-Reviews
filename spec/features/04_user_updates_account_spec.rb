@@ -9,12 +9,13 @@ require 'rails_helper'
 
 feature "user updates account" do
   before(:each) do
-    user = FactoryGirl.create(:user)
-    login_as(user, scope: :user)
+    @user = FactoryGirl.create(:user)
+    login_as(@user, scope: :user)
   end
 
   scenario "unauthenticated user does not see link to profile page" do
     visit shows_path
+    expect(page).to have_content("Profile")
 
     click_link "Sign out"
 
@@ -27,49 +28,47 @@ feature "user updates account" do
 
     click_link "Profile"
 
-    expect(page).to have_content("#{user.first_name} #{user.last_name}'s
-                                  Profile'")
-    expect(current_path).to eq user_path
+    expect(page).to have_content("#{@user.first_name} #{@user.last_name}'s
+                                  Profile")
+    expect(current_path).to eq user_path(@user)
   end
 
   scenario "navigates to edit
             page from profile page" do
-    visit user_path
+    visit user_path(@user)
 
     click_link "Edit Profile"
 
-    expect(page).to have_content "Edit Profile"
+    expect(page).to have_content "Edit User"
     expect(current_path).to eq edit_user_registration_path
   end
 
   scenario "fills in new profile details" do
     visit edit_user_registration_path
 
-    fill_in('First Name', with: 'John')
-    fill_in('Last Name', with: 'Doe')
-    fill_in('Username', with: 'jdoe')
-    fill_in('Password', with: 'password123')
-    fill_in('Reenter Password', with: 'password123')
-    fill_in('Email', with: 'jdoe@email.com')
+    fill_in('user_first_name', with: 'John')
+    fill_in('user_last_name', with: 'Doe')
+    fill_in('user_username', with: 'jdoe')
+    fill_in('user_email', with: 'jdoe@email.com')
+    fill_in('Current password', with: @user.password)
 
-    click_button "Save"
+    click_button "Update"
 
-    expect(page).to have_content "Information updated."
+    expect(page).to have_content "Your account has been updated successfully."
   end
 
   scenario "fills in bad new profile details" do
     visit edit_user_registration_path
 
-    fill_in('First Name', with: '')
-    fill_in('Last Name', with: '')
-    fill_in('Username', with: '')
-    fill_in('Password', with: '')
-    fill_in('Reenter Password', with: '')
-    fill_in('Email', with: '')
+    fill_in('user_first_name', with: '')
+    fill_in('user_last_name', with: '')
+    fill_in('user_username', with: '')
+    fill_in('user_email', with: '')
+    fill_in('Current password', with: @user.password)
 
-    click_button "Save"
+    click_button "Update"
 
-    expect(page).to have_content "Error."
+    expect(page).to have_content "4 errors prohibited this user from being saved"
   end
 
   scenario "logs in with new profile details" do
@@ -78,11 +77,12 @@ feature "user updates account" do
     fill_in('First Name', with: 'John')
     fill_in('Last Name', with: 'Doe')
     fill_in('Username', with: 'jdoe')
-    fill_in('Password', with: 'password123')
-    fill_in('Reenter Password', with: 'password123')
     fill_in('Email', with: 'jdoe@email.com')
+    fill_in("Password", with: "password123")
+    fill_in("Password confirmation", with: "password123")
+    fill_in('Current password', with: @user.password)
 
-    click_button "Save"
+    click_button "Update"
 
     click_link "Sign out"
     click_link "Sign in"
@@ -90,12 +90,8 @@ feature "user updates account" do
     fill_in("Username", with: "jdoe")
     fill_in("Password", with: "password123")
 
-    click_button "Sign in"
+    click_button "Log in"
 
     expect(page).to have_content("Signed in successfully.")
-  end
-
-  scenario "navigates to edit password page from profile page" do
-    
   end
 end

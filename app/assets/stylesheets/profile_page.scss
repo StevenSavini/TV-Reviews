@@ -1,0 +1,25 @@
+@import "settings";
+
+.profile {
+  border: 5px solid $light-gray;
+  border-radius: 2rem;
+  background-color: $black;
+}
+
+.infopanel {
+  background-color: $dark-gray;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.details {
+  list-style: none;
+}
+
+.buttonrow {
+  margin: 1rem;
+}
+
+strong {
+  color: $body-background;
+}
