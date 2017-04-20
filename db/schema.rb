@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419164252) do
+ActiveRecord::Schema.define(version: 20170420172540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reviews", force: :cascade do |t|
+    t.string  "title",       null: false
+    t.text    "description", null: false
+    t.integer "rating"
+    t.integer "show_id"
+    t.integer "user_id"
+    t.index ["show_id"], name: "index_reviews_on_show_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
 
   create_table "shows", force: :cascade do |t|
     t.string   "title",          null: false

@@ -37,3 +37,23 @@ feature "visitors can see the shows name, description, and rating" do
     expect(page).to have_content "5"
   end
 end
+
+feature "visitors can click on show title and be redirected to show page" do
+  scenario "visitor can navigate to show page" do
+
+    game_of_thrones = Show.create(
+    title: 'Game of Thrones',
+    description: 'awesome HBO show',
+    average_rating: 5)
+    californication = Show.create(
+    title: 'Californication',
+    description: 'awesome Showtime show',
+    average_rating: 5)
+
+    visit root_path
+
+    click_link "Game of Thrones"
+
+    expect(current_path).to eq show_path(game_of_thrones)
+  end
+end

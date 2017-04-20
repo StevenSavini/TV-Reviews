@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "shows#index"
   resources :shows do
     resources :users
+    resources :reviews, only: [:new, :create]
   end
 
 end
