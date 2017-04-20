@@ -3,14 +3,14 @@ require "rails_helper"
 feature "visitors can see a list of shows on homepage" do
   scenario "visitor sees shows displayed" do
 
-    game_of_thrones = Show.create(
-    title: 'Game of Thrones',
-    description: 'awesome HBO show',
-    average_rating: 5)
-    californication = Show.create(
-    title: 'Californication',
-    description: 'awesome Showtime show',
-    average_rating: 5)
+    game_of_thrones = Show.create
+      (title: 'Game of Thrones',
+      description: 'awesome HBO show',
+      average_rating: 5)
+    californication = Show.create
+      (title: 'Californication',
+      description: 'awesome Showtime show',
+      average_rating: 5)
 
     visit root_path
 
@@ -25,10 +25,10 @@ end
 feature "visitors can see the shows name, description, and rating" do
   scenario "visitor sees shows info displayed" do
 
-    game_of_thrones = Show.create(
-    title: 'Game of Thrones',
-    description: 'awesome HBO show',
-    average_rating: 5)
+    game_of_thrones = Show.create
+      (title: 'Game of Thrones',
+      description: 'awesome HBO show',
+      average_rating: 5)
 
     visit show_path(game_of_thrones)
 
@@ -41,14 +41,10 @@ end
 feature "visitors can click on show title and be redirected to show page" do
   scenario "visitor can navigate to show page" do
 
-    game_of_thrones = Show.create(
-    title: 'Game of Thrones',
-    description: 'awesome HBO show',
-    average_rating: 5)
-    californication = Show.create(
-    title: 'Californication',
-    description: 'awesome Showtime show',
-    average_rating: 5)
+    game_of_thrones = Show.create
+      (title: 'Game of Thrones',
+      description: 'awesome HBO show',
+      average_rating: 5)
 
     visit root_path
 
