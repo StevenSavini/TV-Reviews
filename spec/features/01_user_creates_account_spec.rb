@@ -15,6 +15,7 @@ feature "user creates account" do
 
     expect(page).to have_content("Create User Account")
     expect(current_path).to eq '/users/sign_up'
+    expect(page).to_not have_content("Sign out")
   end
 
   scenario "fills in account details in form and submits details" do
@@ -31,6 +32,8 @@ feature "user creates account" do
 
     expect(page).to have_content("Welcome! You have signed up successfully.")
     expect(current_path).to eq '/'
+    expect(page).to_not have_content("Sign in")
+    expect(page).to_not have_content("Create Account")
   end
 
   scenario "fills in bad details in form and submits details" do

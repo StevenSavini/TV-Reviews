@@ -13,8 +13,12 @@
   </head>
 
   <body>
-    <%= link_to 'Create Account', new_user_registration_path, class: "button" %>
-    <%= link_to 'Sign In', new_user_session_path, class: "button" %>
+    <% if current_user %>
+      <%= link_to 'Sign out', destroy_user_session_path, class: "button", method: "delete" %>
+    <% else %>
+      <%= link_to 'Create Account', new_user_registration_path, class: "button" %>
+      <%= link_to 'Sign in', new_user_session_path, class: "button" %>
+    <% end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
