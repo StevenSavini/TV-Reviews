@@ -1,0 +1,24 @@
+<h1>Choose or upload profile picture</h1>
+
+
+
+
+
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :avatar, "Add new photo from file" %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar1 %>
+    <%= f.radio_button :avatar, "https://1.bp.blogspot.com/-y96hX4CzXL8/Totq5TPbSVI/
+                          AAAAAAAABHU/g8Pwlr8Wiv4/s1600/
+                          chicken-at-facebook.jpg"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'button' %>
+  </div>
+<% end %>

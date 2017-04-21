@@ -25,3 +25,10 @@ en:
     attributes:
       user:
         login: "Username or email"
+  errors:
+    messages:
+      carrierwave_processing_error: "Cannot resize image."
+      carrierwave_integrity_error: "Not an image."
+      carrierwave_download_error: "Couldn't download image."
+      extension_whitelist_error: "Please upload a file format of jpg, jpeg,
+                                   png, or gif"

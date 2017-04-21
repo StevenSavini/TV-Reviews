@@ -17,7 +17,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 
 gem 'foundation-rails', "6.3.0.0"
-
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'mini_magick'
+gem 'fog'
 
 gem 'devise'
 
@@ -35,6 +38,7 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do

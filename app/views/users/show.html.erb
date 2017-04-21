@@ -1,10 +1,11 @@
 <div class="row small-4 columns infopanel">
   <div class="small-12 large-6 columns">
     <div class="row">
-      <img src="<%=@user.avatar_url%>" alt="avatar_url" class="profile">
+      <img src="<%=@user.avatar%>" alt="avatar" class="profile">
     </div>
     <div class="row buttonrow">
       <%= link_to "Edit Profile", edit_user_registration_path, class: "button" %>
+      <%= link_to "Change Picture", edit_user_path, class: "button" %>
     </div>
   </div>
   <div class="small-12 large-6 columns">
