@@ -11,13 +11,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if user_params["avatar"].class == String
-      uploader = AvatarUploader.new
-      uploader.store!(user_params["avatar"])
-      @user.avatar = uploader.retrieve_from_store!(user_params["avatar"])
-      @user.save
-      redirect_to user_path(@user)
-    elsif @user.update(user_params)
+    if @user.update(user_params)
       flash[:notice] = "Profile picture saved successfully."
       redirect_to user_path(@user)
     else

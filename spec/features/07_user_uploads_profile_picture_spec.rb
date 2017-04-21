@@ -48,16 +48,4 @@ feature "user adds profile picture to account" do
                                   or gif")
   end
 
-  scenario "selects new default avatar" do
-    visit edit_user_path(@user)
-
-    expect(page).to have_content("Change default avatar image")
-    previous_avatar = @user.avatar
-
-    click_button "Save"
-
-    expect(@user.avatar).to_not eq(previous_avatar)
-    expect(@user.avatar).to eq(Avatars.all[0])
-  end
-
 end
