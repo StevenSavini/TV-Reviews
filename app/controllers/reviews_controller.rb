@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :description, :rating).merge(
     show: Show.find(params[:show_id])).merge(
     user: User.find(current_user)
-                                            )
+    )
   end
 
 end

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 # Acceptance Criteria
-# [ ] I want to see a button to create my account from the index page
-# [ ] I want to visit a create account page when I click on this button
-# [ ] I want to fill in my account details (name, username, email, and password)
+# [ ] I want to see a button to create a review from the show page
+# [ ] I want to visit a create review page when I click on this button
+# [ ] I want to fill in my review details (title, description, and rating)
 # [ ] I want to get error messages if I do not fill out all required fields
-# [ ] Once I have created an account, I want to be logged in
+# [ ] Once I have created a review, I want to be redirected to the show page
 
 feature "user creates review" do
 
@@ -14,15 +14,16 @@ feature "user creates review" do
     login_as(@user, scope: :user)
   end
 
-  scenario "sees and clicks on Add a Review button from show page" do
-
-    game_of_thrones = Show.create(
+  before(:each) do
+    @game_of_thrones = Show.create(
       title: 'Game of Thrones',
       description: 'awesome HBO show',
       average_rating: 5
-                                  )
+      )
+  end
+  scenario "sees and clicks on Add a Review button from show page" do
 
-    visit show_path(game_of_thrones)
+    visit show_path(@game_of_thrones)
 
     click_link "Add a Review"
 
@@ -32,13 +33,7 @@ feature "user creates review" do
 
   scenario "fills in review details in form and submits details" do
 
-    game_of_thrones = Show.create(
-      title: 'Game of Thrones',
-      description: 'awesome HBO show',
-      average_rating: 5
-                                  )
-
-    visit new_show_review_path(game_of_thrones)
+    visit new_show_review_path(@game_of_thrones)
 
     fill_in('Title', with: 'Game of Thrones')
     fill_in('Review', with: 'awesome HBO show')
@@ -53,13 +48,8 @@ feature "user creates review" do
   end
 
   scenario "fills in bad details in form and submits details" do
-    game_of_thrones = Show.create(
-      title: 'Game of Thrones',
-      description: 'awesome HBO show',
-      average_rating: 5
-                                  )
 
-    visit new_show_review_path(game_of_thrones)
+    visit new_show_review_path(@game_of_thrones)
 
     click_button "Add Review"
 
