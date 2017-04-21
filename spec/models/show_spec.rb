@@ -7,7 +7,7 @@ feature "visitors can see a list of shows on homepage" do
       title: 'Game of Thrones',
       description: 'awesome HBO show',
       average_rating: 5
-      )
+                                  )
     californication = Show.create(
       title: 'Californication',
       description: 'awesome Showtime show',
