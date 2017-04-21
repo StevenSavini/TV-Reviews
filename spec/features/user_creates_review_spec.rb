@@ -12,15 +12,14 @@ feature "user creates review" do
   before(:each) do
     @user = FactoryGirl.create(:user)
     login_as(@user, scope: :user)
+
+    @game_of_thrones = Show.create(
+    title: 'Game of Thrones',
+    description: 'awesome HBO show',
+    average_rating: 5
+    )
   end
 
-  before(:each) do
-    @game_of_thrones = Show.create(
-      title: 'Game of Thrones',
-      description: 'awesome HBO show',
-      average_rating: 5
-      )
-  end
   scenario "sees and clicks on Add a Review button from show page" do
 
     visit show_path(@game_of_thrones)
