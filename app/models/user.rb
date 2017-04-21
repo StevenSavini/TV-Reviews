@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :email, uniqueness: true
 
+  has_many :reviews
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)
