@@ -2,6 +2,7 @@ require 'coveralls'
 require 'database_cleaner'
 require 'warden'
 require 'devise'
+
 Coveralls.wear!('rails')
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
