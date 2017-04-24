@@ -1,31 +1,14 @@
 class FavoritesController < ApplicationController
 
   def create
-    @favorite = Favorite.new(favorite_params)
+    @user = current_user
     @show = Show.find(params[:show_id])
-    @user = User.find(current_user)
-    if @favorite.save
-      flash[:notice] = "Favorite added successfully!"
-      redirect_to show_path(@favorite.show)
-    else
-      flash[:alert] = @favorite.errors.full_messages.join(". \n")
-      render :new
+
+
+    if  Favorite.create(user_id: @user, show_id: @show)
+      flash[:notice] = "Show has been added to favorites"
+      redirect_to root_path
     end
-  end
-
-
-  def new
-    @show = Show.find(params[:show_id])
-    @favorite = Favorite.new
-  end
-
-  private
-
-  def favorite_params
-    params.require(:favorite).permit(:title, :description, :rating).merge(
-    show: Show.find(params[:show_id])).merge(
-    user: User.find(current_user)
-    )
   end
 
 end

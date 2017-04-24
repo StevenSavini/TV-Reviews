@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :users
   resources :shows, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
+    resources :favorites
   end
 end

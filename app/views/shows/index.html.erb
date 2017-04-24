@@ -11,6 +11,9 @@
           <p>Show Description: <%=  show.description %> </p>
           <p>Average Rating: <%=  show.average_rating %> </p>
         </div>
+        <% if current_user %>
+          <%= button_to "Add to Favorites", show_favorites_path(show), :method => :post %>
+        <% end %>
       </div>
     </div>
   <% end %>
