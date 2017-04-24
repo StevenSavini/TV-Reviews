@@ -16,8 +16,15 @@
 <h4>Reviews</h4>
 <ul>
 <% @reviews.each do |review| %>
+<% if review.updated_at != review.created_at %>
+  <%= "Edited @ #{review.updated_at.
+      strftime("%B %d %Y")}" %>
+<% end %>
   <li>
     Title: <%= review.title %>
+      <% if current_user == review.user %>
+        <%= link_to "edit", edit_show_review_path(@show,review) %>
+      <% end %>
     <br>
     Description: <%= review.description %>
     <br>
