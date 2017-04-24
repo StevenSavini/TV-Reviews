@@ -12,4 +12,8 @@ RSpec.describe Show, type: :model do
   it { should_not have_valid(:average_rating).when(0) }
   it { should_not have_valid(:average_rating).when(6) }
   it { should_not have_valid(:average_rating).when("Rating: 5") }
+
+  context "associations" do
+    it { should have_many(:reviews) }
+  end
 end
