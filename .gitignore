@@ -22,3 +22,6 @@
 /node_modules
 /app/assets/javascripts/bundle.js
 /react/coverage
+
+# Ignore uploaded files in test/development
+/public/uploads

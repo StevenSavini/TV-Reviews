@@ -9,6 +9,7 @@ FactoryGirl.define do
     sequence :username do |n|
       "#{Faker::Internet.user_name}#{n}"
     end
+    avatar Faker::Avatar.image
   end
 
   factory :show do
