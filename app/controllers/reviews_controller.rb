@@ -51,5 +51,4 @@ class ReviewsController < ApplicationController
       raise ActionController::RoutingError.new("Not Found")
     end
   end
-
 end
