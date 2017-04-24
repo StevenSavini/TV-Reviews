@@ -10,3 +10,18 @@
     <p><%= @show.average_rating %></p>
   </div>
 </div>
+
+<%= link_to "Add a Review", new_show_review_path(@show) %>
+
+<h4>Reviews</h4>
+<ul>
+<% @reviews.each do |review| %>
+  <li>
+    Title: <%= review.title %>
+    <br>
+    Description: <%= review.description %>
+    <br>
+    Rating: <%= review.rating %>
+  </li>
+<% end %>
+</ul>

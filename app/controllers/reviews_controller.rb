@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def new
     @show = Show.find(params[:show_id])
     @review = Review.new

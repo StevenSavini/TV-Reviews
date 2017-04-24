@@ -12,6 +12,7 @@ feature "user creates review" do
   before(:each) do
     @user = FactoryGirl.create(:user)
     login_as(@user, scope: :user)
+<<<<<<< HEAD
   end
 
   before(:each) do
@@ -24,16 +25,37 @@ feature "user creates review" do
   scenario "sees and clicks on Add a Review button from show page" do
 
     visit show_path(game_of_thrones)
+=======
+
+    @game_of_thrones = Show.create(
+    title: 'Game of Thrones',
+    description: 'awesome HBO show',
+    average_rating: 5
+    )
+  end
+
+  scenario "sees and clicks on Add a Review button from show page" do
+
+    visit show_path(@game_of_thrones)
+>>>>>>> 23eebfa4e2a42311b0ebdff321c218e1a3db4d3f
 
     click_link "Add a Review"
 
     expect(page).to have_content("Review")
+<<<<<<< HEAD
     expect(current_path).to eq '/shows/1/reviews/new'
+=======
+    expect(current_path).to eq "/shows/#{@game_of_thrones.id}/reviews/new"
+>>>>>>> 23eebfa4e2a42311b0ebdff321c218e1a3db4d3f
   end
 
   scenario "fills in review details in form and submits details" do
 
+<<<<<<< HEAD
     visit new_show_review_path(game_of_thrones)
+=======
+    visit new_show_review_path(@game_of_thrones)
+>>>>>>> 23eebfa4e2a42311b0ebdff321c218e1a3db4d3f
 
     fill_in('Title', with: 'Game of Thrones')
     fill_in('Review', with: 'awesome HBO show')
@@ -42,14 +64,22 @@ feature "user creates review" do
     click_button "Add Review"
 
     expect(page).to have_content("Review added successfully!")
+<<<<<<< HEAD
     expect(current_path).to eq '/shows/2'
+=======
+    expect(current_path).to eq "/shows/#{@game_of_thrones.id}"
+>>>>>>> 23eebfa4e2a42311b0ebdff321c218e1a3db4d3f
     expect(page).to_not have_content("Sign in")
     expect(page).to_not have_content("Create Account")
   end
 
   scenario "fills in bad details in form and submits details" do
 
+<<<<<<< HEAD
     visit new_show_review_path(game_of_thrones)
+=======
+    visit new_show_review_path(@game_of_thrones)
+>>>>>>> 23eebfa4e2a42311b0ebdff321c218e1a3db4d3f
 
     click_button "Add Review"
 
