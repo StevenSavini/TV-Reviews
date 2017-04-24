@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @show = Show.find(params[:show_id])
-    @user = User.find(current_user.id)
+    @user = current_user
     if @review.save
       flash[:notice] = "Review added successfully!"
       redirect_to show_path(@review.show)
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title, :description, :rating).merge(
       show: Show.find(params[:show_id])).merge(
-        user: User.find(current_user.id)
+        user: current_user
       )
   end
 end
