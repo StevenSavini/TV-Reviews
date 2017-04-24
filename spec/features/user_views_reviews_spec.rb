@@ -49,7 +49,6 @@ feature "visitor sees list of reviews on show page" do
     expect(page).to have_content review_for_rock.description
 
     expect(page).not_to have_content game_of_thrones.title
-    # expect(page).not_to have_content review_for_thrones.rating
     expect(page).not_to have_content review_for_thrones.description
   end
 
