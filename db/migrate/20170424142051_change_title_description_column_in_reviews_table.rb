@@ -5,6 +5,7 @@ class ChangeTitleDescriptionColumnInReviewsTable < ActiveRecord::Migration[5.0]
     add_column :reviews, :title, :string
     add_column :reviews, :description, :string
   end
+  
   def down
     remove_column :reviews, :title
     remove_column :reviews, :description
