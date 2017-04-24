@@ -17,3 +17,16 @@
     </ul>
   </div>
 </div>
+
+<div class="row small-4 columns infopanel">
+  <div class="small-12 large-6 columns">
+    <% @user.shows.each do |favorite| %>
+      <ul>
+        <% binding.pry %>
+        <li>
+          <%= favorite.title %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>

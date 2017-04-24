@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170421155037) do
     t.string   "username",                            null: false
     t.string   "first_name",                          null: false
     t.string   "last_name",                           null: false
-    t.string   "avatar_url"
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
