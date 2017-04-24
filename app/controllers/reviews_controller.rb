@@ -6,9 +6,6 @@ class ReviewsController < ApplicationController
     if @review.save
       flash[:notice] = "Review added successfully!"
       redirect_to show_path(@review.show)
-    else
-      flash[:alert] = @review.errors.full_messages.join(". \n")
-      render :new
     end
   end
 
