@@ -1,0 +1,12 @@
+<h1>Choose or upload profile picture</h1>
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :avatar, "Add new photo from file" %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'button' %>
+  </div>
+<% end %>
