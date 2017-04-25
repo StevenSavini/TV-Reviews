@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :shows, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :edit, :update]
   end
+  resources :reviews, only: [:show, :destroy]
 end
