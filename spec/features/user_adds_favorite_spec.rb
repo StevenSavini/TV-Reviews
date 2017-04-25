@@ -4,7 +4,7 @@ require 'rails_helper'
 # [ ] I want to see a button to add a favorite from the index page
 # [ ] I want to see a button to add a favorite from the show page
 # [ ] I want to add a favorite to my user page when I click on this button
-# [ ] Once I have added a favorite, I want to be redirected to back to the index page
+# [ ] Once I have added a favorite, I want to be redirected to the same page
 
 feature "user adds a favorite" do
 
@@ -13,9 +13,9 @@ feature "user adds a favorite" do
     login_as(@user, scope: :user)
 
     @game_of_thrones = Show.create(
-    title: 'Game of Thrones',
-    description: 'awesome HBO show',
-    average_rating: 5
+      title: 'Game of Thrones',
+      description: 'awesome HBO show',
+      average_rating: 5
     )
   end
 
@@ -67,6 +67,5 @@ feature "user adds a favorite" do
     expect(page).to have_content("Create Account")
     expect(current_path).to eq "/shows/#{@game_of_thrones.id}"
   end
-
 
 end

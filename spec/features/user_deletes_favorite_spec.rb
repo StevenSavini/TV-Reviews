@@ -3,7 +3,7 @@ require 'rails_helper'
 # Acceptance Criteria
 # [ ] I want to see a button to delete a favorite from the index page
 # [ ] I want to delete a favorite from my user page when I click on this button
-# [ ] Once I have deleteed a favorite, I want to be redirected to back to the index page
+# [ ] Once I have deleteed a favorite, I want to be redirected to the same page
 
 feature "user deletes a favorite" do
 
@@ -12,9 +12,9 @@ feature "user deletes a favorite" do
     login_as(@user, scope: :user)
 
     @game_of_thrones = Show.create(
-    title: 'Game of Thrones',
-    description: 'awesome HBO show',
-    average_rating: 5
+      title: 'Game of Thrones',
+      description: 'awesome HBO show',
+      average_rating: 5
     )
 
     visit root_path
