@@ -7,5 +7,7 @@ class Show < ApplicationRecord
    validates :average_rating, numericality: true
    validates :average_rating, inclusion: { in: 1..5 }
 
+   has_many :favorites
+   has_many :users, through: :favorites
    has_many :reviews
  end
