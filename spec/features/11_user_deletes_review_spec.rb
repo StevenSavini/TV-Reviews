@@ -24,6 +24,7 @@ feature "user deletes review" do
     click_link "Delete"
 
     expect(page).to have_content("Your review has been deleted")
+    expect(page).to_not have_content("Error deleting review.")
   end
 
   scenario "unauthenticated user cannot see delete button on TV show page" do
