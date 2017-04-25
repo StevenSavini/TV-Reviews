@@ -8,7 +8,7 @@ RSpec.describe Show, type: :model do
   it { should_not have_valid(:description).when(nil, "") }
 
   it { should have_valid(:average_rating).when(5) }
-  it { should_not have_valid(:average_rating).when(nil, "") }
+  it { should have_valid(:average_rating).when(nil, "") }
   it { should_not have_valid(:average_rating).when(0) }
   it { should_not have_valid(:average_rating).when(6) }
   it { should_not have_valid(:average_rating).when("Rating: 5") }
