@@ -26,11 +26,10 @@ class ReviewsController < ApplicationController
     @show = review.show
     if Review.destroy(review.id)
       flash[:notice] = "Your review has been deleted."
-      redirect_to show_path(@show)
     else
       flash[:alert] = "Error deleting review."
-      redirect_to show_path(@show)
     end
+    redirect_to show_path(@show)
   end
 
   def update
