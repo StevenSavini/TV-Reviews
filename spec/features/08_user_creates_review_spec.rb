@@ -27,6 +27,7 @@ feature "user creates review" do
     click_link "Add a Review"
 
     expect(page).to have_content("Review")
+
     expect(current_path).to eq "/shows/#{@game_of_thrones.id}/reviews/new"
   end
 

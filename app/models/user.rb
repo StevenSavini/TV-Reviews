@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :email, uniqueness: true
 
+  has_many :favorites
+  has_many :shows, through: :favorites
   has_many :reviews
   attr_accessor :login
 

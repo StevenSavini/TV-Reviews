@@ -6,6 +6,18 @@
     <div class"show-card">
       <div class="card-divider">
         <h2 class="title"><%= link_to show.title, show_path(show) %></h2>
+        </div>
+        <div class="card-section">
+          <p>Show Description: <%=  show.description %> </p>
+          <p>Average Rating: <%=  show.average_rating %> </p>
+        </div>
+        <% if current_user %>
+          <% if current_user && current_user.shows.include?(show) %>
+            <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: show), :method => :delete %>
+          <% else %>
+            <%= link_to "Add to Favorites", show_favorites_path(show, current_user), :method => :post %>
+          <% end %>
+        <% end %>
       </div>
       <%= link_to image_tag(show.image_url), show_path(show) %>
     </div>
