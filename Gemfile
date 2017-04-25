@@ -23,6 +23,7 @@ gem 'mini_magick'
 gem 'fog'
 
 gem 'devise'
+gem 'httparty'
 
 group :test do
   gem 'coveralls', require: false

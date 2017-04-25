@@ -14,5 +14,6 @@
  *= require_self
  *= require foundation_and_overrides
  *= require profile_page
+ *= require index_page
 
  */
