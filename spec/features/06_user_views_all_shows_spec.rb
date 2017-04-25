@@ -8,8 +8,6 @@ feature "visitors can view shows on index page" do
     visit root_path
 
     expect(page).to have_content "Must Watch TV Shows"
-    expect(page).to have_content first_show.description
-    expect(page).to have_content second_show.description
     expect(page).to have_link first_show.title
     expect(page).to have_link second_show.title
   end
