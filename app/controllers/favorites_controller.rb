@@ -14,5 +14,4 @@ class FavoritesController < ApplicationController
     flash[:notice] = "This show has been deleted from favorites."
     redirect_to(:back)
   end
-
 end
