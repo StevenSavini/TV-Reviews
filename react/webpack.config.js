@@ -13,6 +13,10 @@ var config = {
         exclude: /node_modules/,
         loader: 'babel'
       }
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=25000'
+      }
     ]
   },
   devtool: 'eval-source-map'
