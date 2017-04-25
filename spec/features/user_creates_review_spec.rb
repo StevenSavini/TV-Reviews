@@ -47,14 +47,4 @@ feature "user creates review" do
     expect(page).to_not have_content("Create Account")
   end
 
-  scenario "fills in bad details in form and submits details" do
-
-    visit new_show_review_path(@game_of_thrones)
-
-    click_button "Add Review"
-
-    expect(page).to have_content "Title can't be blank."
-    expect(page).to have_content "Description can't be blank"
-    expect(page).to_not have_content("Review added successfully!")
-  end
 end

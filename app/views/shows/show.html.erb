@@ -8,6 +8,13 @@
   <div class="small-5 columns"
     <h4>Rating</h4>
     <p><%= @show.average_rating %></p>
+    <% if current_user %>
+      <% if current_user && current_user.shows.include?(@show) %>
+        <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: @show), :method => :delete %>
+      <% else %>
+        <%= link_to "Add to Favorites", show_favorites_path(@show, current_user), :method => :post %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

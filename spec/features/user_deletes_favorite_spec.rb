@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 # Acceptance Criteria
-# [ ] I want to see a button to add a favorite from the index page
-# [ ] I want to see a button to add a favorite from the show page
-# [ ] I want to add a favorite to my user page when I click on this button
-# [ ] Once I have added a favorite, I want to be redirected to back to the index page
+# [ ] I want to see a button to delete a favorite from the index page
+# [ ] I want to delete a favorite from my user page when I click on this button
+# [ ] Once I have deleteed a favorite, I want to be redirected to back to the index page
 
-feature "user adds a favorite" do
+feature "user deletes a favorite" do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
@@ -17,26 +16,30 @@ feature "user adds a favorite" do
     description: 'awesome HBO show',
     average_rating: 5
     )
-  end
-
-  scenario "sees and clicks on Add to Favorites button from index page" do
 
     visit root_path
 
     click_link "Add to Favorites"
+  end
 
-    expect(page).to have_content("Your show has been added to favorites.")
+  scenario "sees and clicks on Remove from Favorites button from index page" do
+
+    visit root_path
+
+    click_link "Remove from Favorites"
+
+    expect(page).to have_content("This show has been deleted from favorites.")
 
     expect(current_path).to eq "/"
   end
 
-  scenario "sees and clicks on Add to Favorites button from show page" do
+  scenario "sees and clicks on Remove from Favorites button from show page" do
 
     visit show_path(@game_of_thrones)
 
-    click_link "Add to Favorites"
+    click_link "Remove from Favorites"
 
-    expect(page).to have_content("Your show has been added to favorites.")
+    expect(page).to have_content("This show has been deleted from favorites.")
 
     expect(current_path).to eq "/shows/#{@game_of_thrones.id}"
   end
@@ -67,6 +70,5 @@ feature "user adds a favorite" do
     expect(page).to have_content("Create Account")
     expect(current_path).to eq "/shows/#{@game_of_thrones.id}"
   end
-
 
 end

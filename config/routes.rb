@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :shows, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :edit, :update]
-    resources :favorites
+    resources :favorites, only: [:new, :create]
   end
+  resources :favorites, only: [:destroy]
 end

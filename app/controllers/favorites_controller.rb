@@ -3,12 +3,17 @@ class FavoritesController < ApplicationController
   def create
     @user = current_user
     @show = Show.find(params[:show_id])
-    @favorite = current_user.Favorite.create(user_id: @user, show_id: @show)
+    @favorite = current_user.shows << @show
+    flash[:notice] = "Your show has been added to favorites."
+    redirect_to(:back)
+  end
 
-    if @favorite.save
-      flash[:notice] = "Show has been added to favorites"
-      redirect_to root_path
-    end
+  def destroy
+    favorite = Favorite.find(params[:id])
+    @show = favorite.show
+    Favorite.destroy(params[:id])
+    flash[:notice] = "This show has been deleted from favorites."
+    redirect_to(:back)
   end
 
 end
