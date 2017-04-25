@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 # Acceptance Criteria
 # [ ] User sees `Delete` button on TV show page
 # [ ] User clicks `Delete` button on TV show page and receives

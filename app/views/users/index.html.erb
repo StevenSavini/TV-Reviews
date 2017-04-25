@@ -1,0 +1,20 @@
+<h1>User Administration</h1>
+<% if current_user.nil? || !current_user.admin? %>
+  <h2>Must have administrator privileges</h2>
+<% else %>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="small-6 columns card">
+        <div class="card-divider user">
+          <h2><%= user.username %> </h2>
+          <%= button_to "Delete", user, method: :delete,
+                       data: {confirm: "You Sure?"} %>
+        </div>
+        <ul class="card-section">
+          <li><%= user.first_name %> <%= user.last_name %></li>
+          <li><%= user.email %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% end %>

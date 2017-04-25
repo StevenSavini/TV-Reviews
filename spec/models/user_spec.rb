@@ -22,6 +22,9 @@ RSpec.describe User, type: :model do
   it { should have_valid(:username).when("batman") }
   it { should_not have_valid(:username).when(nil, "") }
 
+  it { should have_valid(:admin).when(false) }
+  it { should have_valid(:admin).when(true) }
+
   context "associations" do
     it { should have_many(:reviews) }
   end
