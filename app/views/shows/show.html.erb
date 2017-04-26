@@ -25,11 +25,13 @@
     <div class="media-object">
       <div class="media-object-section">
         <div class="stacked button-group">
-          <%= link_to "ʌ", review_votes_path(review, button: :upvote), method: :post, class: "button" %>
-          <%= link_to "v", review_votes_path(review, button: :downvote), method: :post, class: "button" %>
+          <% if current_user %>
+            <%= link_to "ʌ", review_votes_path(review, button: :upvote), method: :post, class: "button" %>
+            <%= link_to "v", review_votes_path(review, button: :downvote), method: :post, class: "button" %>
+          <% end %>
         </div>
       </div>
-      <div class="media-object-section"><%= review.total_votes %></div>
+      <div class="media-object-section">Total votes: <%= review.total_votes %></div>
       <div class="media-object-section">
         <% if review.updated_at != review.created_at %>
         <%= "Edited @ #{review.updated_at.

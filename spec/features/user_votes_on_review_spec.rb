@@ -39,7 +39,7 @@ feature "user votes on review" do
 
     click_link "ʌ"
 
-    expect(page).to have_content("Review Total: 1")
+    expect(page).to have_content("Total votes: 1")
   end
 
   scenario "authenticated user clicks downvote" do
@@ -54,7 +54,7 @@ feature "user votes on review" do
 
     click_link "v"
 
-    expect(page).to have_content("Review Total: -1")
+    expect(page).to have_content("Total votes: -1")
   end
 
   scenario "authenticated user clicks upvote twice" do
@@ -69,7 +69,8 @@ feature "user votes on review" do
 
     click_link "ʌ"
     click_link "ʌ"
-    expect(page).to have_content("Review Total: 0")
+    expect(page).to have_content("Total votes: 1")
+    expect(page).to have_content("You can't upvote anymore!")
   end
 
   scenario "authenticated user clicks downvote twice" do
@@ -85,7 +86,8 @@ feature "user votes on review" do
     click_link "v"
     click_link "v"
 
-    expect(page).to have_content("Review Total: 0")
+    expect(page).to have_content("Total votes: -1")
+    expect(page).to have_content("You can't downvote anymore!")
   end
 
   scenario "authenticated user clicks downvote after clicking upvote" do
@@ -101,13 +103,12 @@ feature "user votes on review" do
     click_link "ʌ"
     click_link "v"
 
-    expect(page).to have_content("Review Total: 0")
+    expect(page).to have_content("Total votes: 0")
   end
 
   scenario "unauthenticated user can't see links" do
     visit show_path(show)
 
-    expect(page).to_not have_content("ʌ")
-    expect(page).to_not have_content("v")
+    expect(page).to_not have_link("ʌ")
   end
 end
