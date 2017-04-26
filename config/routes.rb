@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:new, :create]
   end
   resources :favorites, only: [:destroy]
-  resources :reviews, only: [:show, :destroy]
+  resources :reviews, only: [:show, :destroy] do
+    resources :votes
+  end
+
 end

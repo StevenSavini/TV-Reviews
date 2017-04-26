@@ -6,7 +6,6 @@
     <div class"show-card">
       <div class="card-divider">
         <h2 class="title"><%= link_to show.title, show_path(show) %></h2>
-        </div>
         <% if current_user %>
           <% if current_user && current_user.shows.include?(show) %>
             <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: show), :method => :delete %>

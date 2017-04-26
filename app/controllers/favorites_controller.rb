@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
     favorite = Favorite.find(params[:id])
     @show = favorite.show
     Favorite.destroy(params[:id])
-    flash[:notice] = "This show has been deleted from favorites."
+    flash[:alert] = "This show has been deleted from favorites."
     redirect_back(fallback_location: show_path(@show))
   end
 end
