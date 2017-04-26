@@ -38,8 +38,12 @@
            </div>
          </div>
      </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+     <p data-toggler data-animate="fade-in fade-out" class="callout success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+     <p data-toggler data-animate="fade-in fade-out" class="callout alert"><%= alert %></p>
+    <% end %>
 
     <div class="row index-row">
       <%= yield %>

@@ -1,43 +1,58 @@
-<h2><%= @show.title %></h2>
-
-<div class="row">
-  <div class="small-5 columns"
-    <h4>Description</h4>
-    <p><%= @show.description %></p>
-  </div>
-  <div class="small-5 columns"
-    <h4>Rating</h4>
-    <p><%= @show.average_rating %></p>
+<div>
+  <div class="card">
+    <h2><%= @show.title %></h2>
     <% if current_user %>
       <% if current_user && current_user.shows.include?(@show) %>
-        <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: @show), :method => :delete %>
+        <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: @show), method: :delete, class: "warning button" %>
       <% else %>
-        <%= link_to "Add to Favorites", show_favorites_path(@show, current_user), :method => :post %>
+        <%= link_to "Add to Favorites", show_favorites_path(@show, current_user), method: :post, class: "success button" %>
       <% end %>
     <% end %>
+    <div class="card-section">
+      <h4>Description</h4>
+      <p><%= @show.description %></p>
+    </div>
+    <div class="card-section">
+      <p>Average Rating: <%= @show.average_rating %></p>
+    </div>
   </div>
-</div>
 
-<%= link_to "Add a Review", new_show_review_path(@show) %>
 
-<h4>Reviews</h4>
-<ul>
-<% @reviews.each do |review| %>
-<% if review.updated_at != review.created_at %>
-  <%= "Edited @ #{review.updated_at.
-      strftime("%B %d %Y")}" %>
-<% end %>
-  <li>
-    Title: <%= review.title %>
-      <% if current_user == review.user %>
+  <h4>Reviews</h4>
+  <%= link_to "Add a Review", new_show_review_path(@show), class: "button" %>
+  <div class="review-section row">
+    <% @reviews.each do |review| %>
+    <div class="media-object">
+      <div class="media-object-section">
+        <div class="stacked button-group">
+          <%= link_to "ʌ", review_votes_path(review, button: :upvote), method: :post, class: "button" %>
+          <%= link_to "v", review_votes_path(review, button: :downvote), method: :post, class: "button" %>
+        </div>
+      </div>
+      <% total = 0 %>
+      <% review.votes.each do |vote| %>
+        <% total += vote.value %>
+      <% end %>
+      <div class="media-object-section"><%= total %></div>
+      <div class="media-object-section">
+        <% if review.updated_at != review.created_at %>
+        <%= "Edited @ #{review.updated_at.
+        strftime("%B %d %Y")}" %>
+        <% end %>
+
+        Title: <%= review.title %>
+        <% if current_user == review.user %>
         <%= link_to "edit", edit_show_review_path(@show,review) %>
         <%= link_to "Delete", review, method: :delete,
-                     data: {confirm: "You Sure?"} %>
-      <% end %>
-    <br>
-    Description: <%= review.description %>
-    <br>
-    Rating: <%= review.rating %>
-  </li>
-<% end %>
-</ul>
+        data: {confirm: "You Sure?"} %>
+        <% end %>
+        <br>
+        Description: <%= review.description %>
+        <br>
+        Rating: <%= review.rating %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>

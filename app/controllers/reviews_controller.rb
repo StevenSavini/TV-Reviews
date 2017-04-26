@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
     @user = current_user
     if @review.save
       flash[:notice] = "Review added successfully!"
+      Show.average_rating_calc(@show)
       redirect_to show_path(@review.show)
     end
   end
@@ -25,6 +26,7 @@ class ReviewsController < ApplicationController
     review = Review.find(params[:id])
     @show = review.show
     if Review.destroy(review.id)
+      Show.average_rating_calc(@show)
       flash[:notice] = "Your review has been deleted."
     else
       flash[:alert] = "Error deleting review."
@@ -36,6 +38,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.update(review_params)
     if @review.save
+      Show.average_rating_calc(@show)
       flash[:notice] = "Review successfully updated"
       redirect_to show_path(@review.show)
     else
