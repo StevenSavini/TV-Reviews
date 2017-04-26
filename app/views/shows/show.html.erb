@@ -29,11 +29,7 @@
           <%= link_to "v", review_votes_path(review, button: :downvote), method: :post, class: "button" %>
         </div>
       </div>
-      <% total = 0 %>
-      <% review.votes.each do |vote| %>
-        <% total += vote.value %>
-      <% end %>
-      <div class="media-object-section"><%= total %></div>
+      <div class="media-object-section"><%= review.total_votes %></div>
       <div class="media-object-section">
         <% if review.updated_at != review.created_at %>
         <%= "Edited @ #{review.updated_at.
