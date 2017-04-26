@@ -1,7 +1,7 @@
 class Vote < ApplicationRecord
-   belongs_to :user
-   belongs_to :review
+  belongs_to :user
+  belongs_to :review
 
-   validates :value, numericality: true
-   validates :value, inclusion: { in: -1..1 }
+  validates :value, numericality: true
+  validates :value, inclusion: { in: -1..1 }
 end

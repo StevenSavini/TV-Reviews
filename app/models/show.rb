@@ -14,7 +14,7 @@ class Show < ApplicationRecord
       show.reviews.each do |review|
         rating_total += review.rating
       end
-      average_rating = rating_total/show.reviews.count.to_f
+      average_rating = rating_total / show.reviews.count.to_f
       show.average_rating = average_rating
       show.save!
     end
