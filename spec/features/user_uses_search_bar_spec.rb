@@ -38,4 +38,20 @@ feature "user searches for shows" do
     expect(page).to_not have_content game_of_thrones.title
   end
 
+  scenario "index page is shown as is when search bar is empty" do
+
+    game_of_thrones = Show.create(
+      title: "Game of Thrones",
+      description: "awesome HBO show", average_rating: 5
+    )
+
+    visit root_path
+
+    click_button "Search"
+
+    expect(current_path).to eq "/shows"
+    expect(page).to have_content game_of_thrones.title
+    expect(page).to have_content @prison_break.title
+  end
+
 end

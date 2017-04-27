@@ -7,7 +7,8 @@ class ShowsController < ApplicationController
 
   def index
     @shows = Show.all
-    @shows = if params[:search]
+    @shows = 
+    if params[:search]
       Show.search(params[:search]).order("created_at DESC")
     else
       Show.all.order("created_at DESC")
