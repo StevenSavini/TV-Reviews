@@ -39,7 +39,9 @@
         <% end %>
 
         Title: <%= review.title %>
-        <% if current_user == review.user %>
+        <% if !current_user.nil? && (current_user.admin? ||
+          current_user == review.user) %>
+
         <%= link_to "edit", edit_show_review_path(@show,review) %>
         <%= link_to "Delete", review, method: :delete,
         data: {confirm: "You Sure?"} %>
