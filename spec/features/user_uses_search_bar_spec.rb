@@ -6,8 +6,8 @@ feature "user searches for shows" do
     login_as(@user, scope: :user)
 
     @prison_break = Show.create(
-    title: "Prison Break",
-    description: "awesome Fox show", average_rating: 5
+      title: "Prison Break",
+      description: "awesome Fox show", average_rating: 5
     )
   end
 
@@ -17,7 +17,6 @@ feature "user searches for shows" do
 
     fill_in('search', with: 'prison')
     click_button "Search"
-
 
     expect(current_path).to eq "/shows"
     expect(page).to have_content @prison_break.title
@@ -34,7 +33,6 @@ feature "user searches for shows" do
 
     fill_in('search', with: 'prison')
     click_button "Search"
-
 
     expect(current_path).to eq "/shows"
     expect(page).to_not have_content game_of_thrones.title
