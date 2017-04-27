@@ -5,6 +5,7 @@ RSpec.describe Show, type: :model do
   it { should_not have_valid(:title).when(nil, "") }
 
   it { should have_valid(:description).when("Wayne") }
+  it { should_not have_valid(:description).when(nil, "") }
 
   it { should have_valid(:average_rating).when(5) }
   it { should have_valid(:average_rating).when(nil, "") }
