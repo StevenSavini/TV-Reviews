@@ -30,21 +30,4 @@ feature "user creates review" do
 
     expect(current_path).to eq "/shows/#{@game_of_thrones.id}/reviews/new"
   end
-
-  scenario "fills in review details in form and submits details" do
-
-    visit new_show_review_path(@game_of_thrones)
-
-    fill_in('Title', with: 'Game of Thrones')
-    fill_in('Review', with: 'awesome HBO show')
-    select(5, from: 'Rating')
-
-    click_button "Add Review"
-
-    expect(page).to have_content("Review added successfully!")
-    expect(current_path).to eq "/shows/#{@game_of_thrones.id}"
-    expect(page).to_not have_content("Sign in")
-    expect(page).to_not have_content("Create Account")
-  end
-
 end
