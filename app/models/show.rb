@@ -11,4 +11,16 @@ class Show < ApplicationRecord
   def self.search(search)
     where("title ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%")
   end
+
+  def self.average_rating_calc(show)
+    rating_total = 0
+    if !show.nil? && !show.reviews.nil?
+      show.reviews.each do |review|
+        rating_total += review.rating
+      end
+      average_rating = rating_total / show.reviews.count.to_f
+      show.average_rating = average_rating
+      show.save!
+    end
+  end
 end

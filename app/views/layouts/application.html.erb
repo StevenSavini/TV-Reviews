@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TVReviews</title>
+    <title>TV a la Carte</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -10,44 +10,69 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-
-    <%= form_tag(shows_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Shows" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-
   </head>
 
   <body>
-    <div class="top-bar">
-       <div class="top-bar-title"> <%= link_to "TV Reviews", root_path %></div>
-         <div>
-           <div class="top-bar-left"></div>
-           <div class="top-bar-right">
-             <ul class="dropdown menu" data-dropdown-menu>
-               <% if current_user %>
-                 <li class="menu-text">
-                   <%= "#{current_user.username}" %>
-                   <ul class="menu vertical">
-                     <li><%= link_to "Profile", user_path(current_user) %></li>
-                     <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
-                   </ul>
-                 </li>
-               <% else %>
-                 <li><%= link_to 'Create Account', new_user_registration_path, class: "button" %></li>
-                 <li><%= link_to 'Sign in', new_user_session_path, class: "button" %></li>
-               <% end %>
-               <% if current_user && current_user.admin? %>
+    <div class="top-bar-container" data-sticky-container>
+      <div class="sticky sticky-topbar" data-sticky data-options="marginTop:0;" style="width:100%">
+        <div class="top-bar">
+          <div class="top-bar-title">
+            <%= link_to root_path do %>
+              <%= image_tag("logo_primary.png", class: "menu-icon") %>
+            <% end %>
+          </div>
+          <div class="top-bar-left"></div>
+          <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <% if current_user %>
+                <li class="menu-text">
+                  <%= "#{current_user.username}" %>
+                  <ul class="menu vertical">
+                    <li><%= link_to "Profile", user_path(current_user) %></li>
+                    <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
+                  </ul>
+                </li>
+              <% else %>
+                <li><%= link_to 'Create Account', new_user_registration_path, class: "button" %></li>
+                <li><%= link_to 'Sign in', new_user_session_path, class: "button" %></li>
+              <% end %>
+              <% if current_user && current_user.admin? %>
                 <li><%= link_to 'User Admin', users_path %></li>
-               <% end %>
-             </ul>
-           </div>
-         </div>
-     </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+              <% end %>
+              <li class="has-form">
+                <%= form_tag(shows_path, :method => "get", id: "search-form") do %>
+                  <div class="row collapse">
+                    <div class="small-8 columns">
+                      <%= text_field_tag :search, params[:search], placeholder: "Search Shows"%>
+                    </div>
+                    <div class="small-4 columns">
+                      <%= submit_tag "Search", name: nil, class: "button" %>
+                    </div>
+                  </div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="row index-row">
+    <% if notice %>
+      <div class="success callout" data-closable><%= notice %>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert callout" data-closable><%= alert %>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+    <div>
       <%= yield %>
     </div>
 

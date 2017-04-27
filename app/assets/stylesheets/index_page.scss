@@ -4,6 +4,31 @@
   font-size: 1.25vw;
 }
 
-.index-row {
+.row {
   max-width: 140rem;
+}
+
+.menu-icon {
+  height: 3em;
+  width: auto;
+}
+
+.top-bar-right {
+  padding-top: 8px;
+}
+
+.overlay-container {
+  position: relative;
+}
+
+.overlay-container .overlay {
+  position: absolute; //css only works with this here
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.button {
+  margin: 0;
+  opacity: 0.85;
 }

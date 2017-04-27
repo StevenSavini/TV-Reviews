@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
     @show = Show.find(params[:show_id])
     @user = current_user
     if @review.save
+      Show.average_rating_calc(@show)
       flash[:notice] = "Review added successfully!"
       redirect_to show_path(@review.show)
     end
@@ -36,6 +37,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.update(review_params)
     if @review.save
+      Show.average_rating_calc(@show)
       flash[:notice] = "Review successfully updated"
       redirect_to show_path(@review.show)
     else

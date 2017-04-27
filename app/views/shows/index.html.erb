@@ -1,25 +1,24 @@
-<h1>Must Watch TV Shows</h1>
-
-<div class="row index-row">
+<h1>Current Netflix Shows</h1>
+<div class="row index-row small-up-2 medium-up-3 large-up-4">
   <% @shows.each do |show| %>
-  <div class="small-12 medium-6 large-3 columns">
+  <div class="column column-block">
     <div class"show-card">
-      <div class="card-divider">
-        <h2 class="title"><%= link_to show.title, show_path(show) %></h2>
-        </div>
-        <% if current_user %>
+      <div class="overlay-container">
+        <%= link_to image_tag(show.image_url), show_path(show), id: "show-link" %>
+        <div class="overlay">
+          <% if current_user %>
           <% if current_user && current_user.shows.include?(show) %>
-            <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: show), :method => :delete %>
+          <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: show), :method => :delete, class: "button alert" %>
           <% else %>
-            <%= link_to "Add to Favorites", show_favorites_path(show, current_user), :method => :post %>
+          <%= link_to "Add to Favorites", show_favorites_path(show, current_user), :method => :post, class: "button success" %>
           <% end %>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-      <%= link_to image_tag(show.image_url), show_path(show) %>
     </div>
   </div>
   <% if @shows.blank? %>
   <h4>There are no shows containing the term <%= params[:search] %>.</h4>
-<% end %>
+  <% end %>
   <% end %>
 </div>

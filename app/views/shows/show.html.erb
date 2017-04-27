@@ -1,26 +1,51 @@
 <div>
-  <div class="card">
-    <h2><%= @show.title %></h2>
-    <% if current_user %>
-      <% if current_user && current_user.shows.include?(@show) %>
-        <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: @show), method: :delete, class: "warning button" %>
-      <% else %>
-        <%= link_to "Add to Favorites", show_favorites_path(@show, current_user), method: :post, class: "success button" %>
-      <% end %>
-    <% end %>
-    <div class="card-section">
-      <h4>Description</h4>
-      <p><%= @show.description %></p>
+  <div class="row">
+    <div class="small-9 columns">
+      <div class="card">
+        <h2><%= @show.title %></h2>
+        <div class="overlay-container">
+          <%= link_to image_tag(@show.image_url), show_path(@show) %>
+          <div class="overlay">
+            <% if current_user %>
+            <% if current_user && current_user.shows.include?(@show) %>
+            <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: @show), :method => :delete, class: "button alert" %>
+            <% else %>
+            <%= link_to "Add to Favorites", show_favorites_path(@show, current_user), :method => :post, class: "button success" %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-section">
+          <h4>Description</h4>
+          <p><%= @show.description %></p>
+        </div>
+        <div class="card-section">
+          <p>Average Rating: <%= @show.average_rating %></p>
+        </div>
+      </div>
     </div>
-    <div class="card-section">
-      <p>Average Rating: <%= @show.average_rating %></p>
+    <div class="small-3 columns">
+      <div class="card">
+        <div class="card-section">
+          <h2>Other Users Who Like <%= @show.title%></h2>
+        </div>
+        <div class="card-divider">
+          <ul class="user-list"><% @show.users.each do |user| %>
+            <li>
+            <%= user.username %>
+            <%= link_to image_tag(user.avatar.thumb.url), user_path(user) %></li>
+          <% end %></ul>
+        </div>
+      </div>
     </div>
+
   </div>
 
 
-  <h4>Reviews</h4>
-  <%= link_to "Add a Review", new_show_review_path(@show), class: "button" %>
+
   <div class="review-section row">
+    <h4>Reviews</h4>
+    <%= link_to "Add a Review", new_show_review_path(@show), class: "button" %>
     <% @reviews.each do |review| %>
     <div class="media-object">
       <div class="media-object-section">
@@ -41,7 +66,6 @@
         Title: <%= review.title %>
         <% if !current_user.nil? && (current_user.admin? ||
           current_user == review.user) %>
-
         <%= link_to "edit", edit_show_review_path(@show,review) %>
         <%= link_to "Delete", review, method: :delete,
         data: {confirm: "You Sure?"} %>

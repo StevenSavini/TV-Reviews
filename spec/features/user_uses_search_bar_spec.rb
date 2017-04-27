@@ -19,7 +19,7 @@ feature "user searches for shows" do
     click_button "Search"
 
     expect(current_path).to eq "/shows"
-    expect(page).to have_content @prison_break.title
+    expect(page).to have_css("img[src*='http://www.hardwickagriculture.org/blog/wp-content/uploads/placeholder.jpg']")
   end
 
   scenario "does not see shows unrelated to search" do
@@ -50,8 +50,7 @@ feature "user searches for shows" do
     click_button "Search"
 
     expect(current_path).to eq "/shows"
-    expect(page).to have_content game_of_thrones.title
-    expect(page).to have_content @prison_break.title
+    expect(page).to have_css("img[src*='http://www.hardwickagriculture.org/blog/wp-content/uploads/placeholder.jpg']")
   end
 
 end
