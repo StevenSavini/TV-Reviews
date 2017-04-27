@@ -10,6 +10,12 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+    <%= form_tag(shows_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Shows" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
   </head>
 
   <body>
@@ -38,12 +44,8 @@
            </div>
          </div>
      </div>
-    <% if notice %>
-     <p data-toggler data-animate="fade-in fade-out" class="callout success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-     <p data-toggler data-animate="fade-in fade-out" class="callout alert"><%= alert %></p>
-    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <div class="row index-row">
       <%= yield %>

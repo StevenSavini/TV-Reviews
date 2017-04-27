@@ -7,8 +7,13 @@ json_response["results"].each do |result|
   json_show_details = JSON.parse(show_details.body)
   Show.find_or_create_by!(title: result["title"]) do |show|
     show.image_url = result["artwork_448x252"]
-    show.description = json_show_details["overview"]
-    show.premiere_date = json_show_details["first_aired"]
     puts "Show added to db."
+  end
+
+  show = Show.find_by(title: result["title"])
+  show.description = json_show_details["overview"]
+  show.premiere_date = json_show_details["first_aired"]
+  if show.save!
+    puts "Show #{show.id} updated!"
   end
 end

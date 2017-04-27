@@ -6,6 +6,7 @@
     <div class"show-card">
       <div class="card-divider">
         <h2 class="title"><%= link_to show.title, show_path(show) %></h2>
+        </div>
         <% if current_user %>
           <% if current_user && current_user.shows.include?(show) %>
             <%= link_to "Remove from Favorites", Favorite.find_by(user_id: current_user, show_id: show), :method => :delete %>
@@ -17,5 +18,8 @@
       <%= link_to image_tag(show.image_url), show_path(show) %>
     </div>
   </div>
+  <% if @shows.blank? %>
+  <h4>There are no shows containing the term <%= params[:search] %>.</h4>
+<% end %>
   <% end %>
 </div>

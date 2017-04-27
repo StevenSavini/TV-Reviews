@@ -5,5 +5,4 @@ class Review < ApplicationRecord
 
   belongs_to :show
   belongs_to :user
-  has_many :votes
 end
