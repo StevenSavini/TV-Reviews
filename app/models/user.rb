@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :shows, through: :favorites
   has_many :reviews
-  has_many :votes
   attr_accessor :login
 
   mount_uploader :avatar, AvatarUploader
