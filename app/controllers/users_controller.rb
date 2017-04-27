@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authorize_user
 
   def index
     @users = User.all
@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    unless @user == current_user || current_user.admin?
+      flash[:alert] = "You are not authorized to view this record."
+      redirect_to root_path
+    end
     @favorites = @user.favorites
   end
 
@@ -41,5 +45,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email,
                                  :avatar)
+  end
+
+  def authorize_user
+    if !user_signed_in? && !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 end
