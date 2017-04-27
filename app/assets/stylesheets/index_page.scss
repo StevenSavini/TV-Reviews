@@ -17,9 +17,12 @@
   padding-top: 8px;
 }
 
-.overlay-container .overlay {
+.overlay-container {
   position: relative;
-  position: absolute;
+}
+
+.overlay-container .overlay {
+  position: absolute; //css only works with this here
   top: 0;
   left: 0;
   right: 0;
