@@ -10,10 +10,10 @@ feature "administrator deletes reviews" do
     login_as(@admin, scope: :user)
 
     @game_of_thrones = Show.create(
-    title: 'Game of Thrones',
-    description: 'awesome HBO show',
-    average_rating: 5
-    )
+      title: 'Game of Thrones',
+      description: 'awesome HBO show',
+      average_rating: 5
+      )
     @review_for_thrones = Review.create(
     title: "The deaths hit you right in the feels",
     description: "Hodor", rating: 5, show: @game_of_thrones, user: @admin
