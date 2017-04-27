@@ -2,7 +2,7 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
-    @reviews = @show.reviews
+    @reviews = @show.reviews.order("total_votes DESC")
   end
 
   def index
@@ -11,7 +11,7 @@ class ShowsController < ApplicationController
       if params[:search]
         Show.search(params[:search]).order("created_at DESC")
       else
-        Show.all.order("created_at DESC")
+        Show.all.order("created_at ASC")
       end
   end
 end

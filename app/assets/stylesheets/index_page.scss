@@ -4,6 +4,31 @@
   font-size: 1.25vw;
 }
 
-.index-row {
+.row {
   max-width: 140rem;
+}
+
+.menu-icon {
+  width: auto;
+  height: 3em;
+}
+
+.top-bar-right {
+  padding-top: 8px;
+}
+
+.overlay-container {
+  position: relative; /* <-- Set as the reference for the positioned overlay */
+}
+
+.overlay-container .overlay {
+  position: absolute; /* <-- Remove the overlay from normal flow         */
+  top: 0;          /* <-- Keep the overlay at the bottom of the box   */
+  left: 0;            /* <-- Set left and right properties to 0          */
+  right: 0;           /*     In order to expand the overlay horizontally */
+}
+
+.button {
+  margin: 0;
+  opacity: 0.85;
 }

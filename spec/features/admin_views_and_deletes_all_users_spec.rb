@@ -72,7 +72,7 @@ feature "administrator reviews all users" do
 
   scenario "non-admin user can't see user list" do
     user = FactoryGirl.create(:user)
-    login_as(user)
+    login_as(user, scope: :user)
 
     visit users_path
 
