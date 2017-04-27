@@ -40,11 +40,11 @@ class ReviewsController < ApplicationController
     if @review.save
       Show.average_rating_calc(@show)
       flash[:notice] = "Review successfully updated"
-      redirect_to show_path(@review.show)
     else
       flash[:alert] = "Unable to update. There was an error"
       redirect_to edit_show_review_path(@review.show, @review)
     end
+    redirect_to show_path(@review.show)
   end
 
   private

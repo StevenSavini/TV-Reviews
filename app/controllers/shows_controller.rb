@@ -5,7 +5,7 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
-    @reviews = @show.reviews.order('total_votes DESC')
+    @reviews = @show.reviews
   end
 
 end
