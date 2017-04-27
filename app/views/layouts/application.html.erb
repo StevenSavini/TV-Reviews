@@ -23,15 +23,11 @@
           </div>
           <div class="top-bar-left"></div>
           <div class="top-bar-right">
-            <ul class="dropdown menu" data-dropdown-menu>
+            <ul class="menu">
               <% if current_user %>
-                <li class="menu-text">
-                  <%= "#{current_user.username}" %>
-                  <ul class="menu vertical">
-                    <li><%= link_to "Profile", user_path(current_user) %></li>
-                    <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
-                  </ul>
-                </li>
+                <li class="menu-text"><%= "#{current_user.username}" %></li>
+                <li class="menu-text"><%= link_to "Profile", user_path(current_user) %></li>
+                <li class="menu-text"><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li>
               <% else %>
                 <li><%= link_to 'Create Account', new_user_registration_path, class: "button" %></li>
                 <li><%= link_to 'Sign in', new_user_session_path, class: "button" %></li>
