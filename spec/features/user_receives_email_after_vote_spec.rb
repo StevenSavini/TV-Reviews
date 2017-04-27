@@ -6,14 +6,16 @@ require 'rails_helper'
 feature "user receives email after vote" do
   let(:user) { FactoryGirl.create(:user) }
   let(:show) { FactoryGirl.create(:show) }
-  let(:review) { Review.create(user: user, show: show, title: "Test",
-                               description: "Test Desc", rating: 5) }
+  let(:review) do
+    Review.create(user: user, show: show, title: "Test",
+                  description: "Test Desc", rating: 5)
+  end
 
   scenario "authenticated user votes on review" do
     user2 = FactoryGirl.create(:user)
     login_as(user2, scope: :user)
     Review.create(user: user, show: show, title: "Test",
-                                 description: "Test Desc", rating: 5)
+                  description: "Test Desc", rating: 5)
     visit show_path(show)
 
     click_link("ʌ")
