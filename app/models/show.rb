@@ -8,4 +8,8 @@ class Show < ApplicationRecord
    has_many :favorites
    has_many :users, through: :favorites
    has_many :reviews
+
+   def self.search(search)
+   where("title ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%")
+   end
 end

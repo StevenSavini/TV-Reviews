@@ -18,5 +18,8 @@
       <%= link_to image_tag(show.image_url), show_path(show) %>
     </div>
   </div>
+  <% if @shows.blank? %>
+  <h4>There are no shows containing the term <%= params[:search] %>.</h4>
+<% end %>
   <% end %>
 </div>
