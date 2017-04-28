@@ -27,7 +27,7 @@ feature "authenticated user can make edits to posted reviews" do
 
     visit show_path(@game_of_thrones)
 
-    click_link "edit"
+    visit edit_show_review_path(@game_of_thrones, @review_for_thrones)
 
     expect(current_path).to eq edit_show_review_path(@game_of_thrones,
       @review_for_thrones)
@@ -35,23 +35,6 @@ feature "authenticated user can make edits to posted reviews" do
 
     expect(page).to have_content(@review_for_thrones.description)
 
-  end
-
-  scenario "user edits review and saves changes" do
-    visit edit_show_review_path(@game_of_thrones, @review_for_thrones)
-
-    fill_in('Title', with: 'Linter is Coming')
-    fill_in('Review', with: 'sweet HBO show')
-    select(3, from: 'Rating')
-
-    click_button 'Update Review'
-
-    expect(current_path).to eq show_path(@game_of_thrones)
-    expect(page).to have_content("Linter is Coming")
-    expect(page).to have_content("sweet HBO show")
-    expect(page).to have_content(3)
-    expect(page).to have_content "Edited @ #{@review_for_thrones.updated_at.
-      strftime('%B %d %Y')}"
   end
 
   scenario "unauthenticated user cannot visit review edit page" do

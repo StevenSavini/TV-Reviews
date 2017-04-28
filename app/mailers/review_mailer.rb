@@ -3,7 +3,7 @@ class ReviewMailer < ActionMailer::Base
 
   def review_email(user)
     @user = user
-    @url = 'http://tvalacarte.com/shows/:id'
+    @url = 'http://tvalacarte.com/shows/'
     mail(to: @user.email, subject: 'Someone voted on your review')
   end
 end

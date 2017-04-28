@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :authorize_user
 
   def create
     @review = Review.new(review_params)
@@ -55,9 +54,4 @@ class ReviewsController < ApplicationController
       )
   end
 
-  def authorize_user
-    if !user_signed_in? && !current_user.admin?
-      raise ActionController::RoutingError.new("Not Found")
-    end
-  end
 end

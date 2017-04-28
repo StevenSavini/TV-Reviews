@@ -21,21 +21,9 @@ feature "administrator deletes reviews" do
   end
 
   scenario "sees Delete button for reviews from show page" do
+    visit edit_show_review_path(@game_of_thrones, @review_for_thrones)
 
-    visit show_path(@game_of_thrones)
-
-    find_link("Delete").visible?
-  end
-
-  scenario "clicks delete button and removes review from page" do
-
-    visit show_path(@game_of_thrones)
-
-    expect(page).to have_content("awesome HBO show")
-
-    click_link "Delete"
-
-    expect(page).to_not have_content("The deaths hit you right in the feels")
+    find_button("Delete").visible?
   end
 
   scenario "user is not able to delete reviews of other users" do
@@ -45,11 +33,9 @@ feature "administrator deletes reviews" do
     @user = FactoryGirl.create(:user)
     login_as(@user)
 
-    visit show_path(@game_of_thrones)
+    visit edit_show_review_path(@game_of_thrones, @review_for_thrones)
 
-    expect(page).to have_content("The deaths hit you right in the feels")
-
-    expect(page).to_not have_link "Delete"
+    expect(page).to_not have_button "Delete"
 
   end
 end
