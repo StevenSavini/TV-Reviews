@@ -15,18 +15,13 @@
       <li><strong>Name</strong> <%= @user.first_name %> <%= @user.last_name %></li>
       <li><strong>Email</strong> <%= @user.email %></li>
     </ul>
-  </div>
-</div>
-
-<div class="row small-4 columns infopanel">
-  <div class="small-12 large-6 columns">
     <h3> Favorites</h3>
     <% @user.shows.each do |favorite| %>
-      <ul>
-        <li>
-          <%= favorite.title %>
-        </li>
-      </ul>
+    <ul>
+      <li>
+        <%= link_to favorite.title, show_path(favorite) %>
+      </li>
+    </ul>
     <% end %>
   </div>
 </div>
