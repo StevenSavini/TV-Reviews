@@ -1,5 +1,6 @@
 class Api::V1::ReviewsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
+  skip_before_action :verify_authenticity_token,
+    only: [:create, :destroy, :update]
 
   def new
     @review = Review.new
@@ -40,9 +41,9 @@ class Api::V1::ReviewsController < ApplicationController
       review.save!
       ReviewMailer.review_email(user_email).deliver
       render json: {
-       status: 201,
-       message: ("successfully voted on a review"),
-       review: review
+        status: 201,
+        message: "successfully voted on a review",
+        review: review
       }.to_json
     elsif params["vote"] == "down" && vote.value > -1
       vote.value -= 1
@@ -51,9 +52,9 @@ class Api::V1::ReviewsController < ApplicationController
       review.save!
       ReviewMailer.review_email(user_email).deliver
       render json: {
-       status: 201,
-       message: ("successfully voted on a review"),
-       review: review
+        status: 201,
+        message: "successfully voted on a review",
+        review: review
       }.to_json
     else
       render json: {
