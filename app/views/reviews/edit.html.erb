@@ -1,25 +1,29 @@
-<h2>Review Form for <%= @show.title %></h2>
-<%= link_to "Back to Show", show_path(@show) %>
+<% if current_user != @review.user %>
+  <h2>You can't edit reviews you didn't write!</h2>
+<% else %>
+  <h2>Review Form for <%= @show.title %></h2>
+  <%= link_to "Back to Show", show_path(@show) %>
 
-<%= form_for [@show, @review] do |f| %>
-  <%= f.label :title, "Title" %>
-  <%= f.text_field :title %>
-  <br /><br />
+  <%= form_for [@show, @review] do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+    <br /><br />
 
-  <%= f.label :description, "Review" %>
-  <%= f.text_area :description %>
-  <br /><br />
+    <%= f.label :description, "Review" %>
+    <%= f.text_area :description %>
+    <br /><br />
 
-  <%= f.label :rating %>
-  <%= f.select :rating, [1, 2, 3, 4, 5] %>
-  <br /><br />
+    <%= f.label :rating %>
+    <%= f.select :rating, [1, 2, 3, 4, 5] %>
+    <br /><br />
 
-  <%= f.submit "Update Review" %>
+    <%= f.submit "Update Review" %>
 
-<% end %>
+  <% end %>
 
-<% if !current_user.nil? && (current_user.admin? ||
-  current_user == @review.user) %>
-  <%= button_to "Delete", @review, method: :delete,
-  data: {confirm: "You Sure?"} %>
+  <% if (current_user && current_user.admin?) ||
+    current_user == @review.user %>
+    <%= button_to "Delete", @review, method: :delete,
+    data: {confirm: "You Sure?"} %>
+  <% end %>
 <% end %>
