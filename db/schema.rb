@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20170427212844) do
     t.string   "username",                                                                                                    null: false
     t.string   "first_name",                                                                                                  null: false
     t.string   "last_name",                                                                                                   null: false
-    t.string   "avatar",                 default: "http://www.rutlandherald.com/wp-content/uploads/2017/03/default-user.png"
     t.boolean  "admin",                  default: false
+    t.string   "avatar",                 default: "http://www.rutlandherald.com/wp-content/uploads/2017/03/default-user.png"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

@@ -1,16 +1,5 @@
 class ReviewsController < ApplicationController
 
-  def create
-    @review = Review.new(review_params)
-    @show = Show.find(params[:show_id])
-    @user = current_user
-    if @review.save
-      Show.average_rating_calc(@show)
-      flash[:notice] = "Review added successfully!"
-      redirect_to show_path(@review.show)
-    end
-  end
-
   def new
     @show = Show.find(params[:show_id])
     @review = Review.new
