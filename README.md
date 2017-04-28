@@ -5,7 +5,7 @@
 
 # TV à la Carte
 
-[TV à la Carte](http://www.tv-reviews.herokuapp.com)
+[TV à la Carte](https://www.tv-reviews.herokuapp.com)
 
 ### Contributors:
 
