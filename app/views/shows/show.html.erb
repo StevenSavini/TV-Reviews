@@ -41,42 +41,8 @@
 
   </div>
 
-
-
   <div class="review-section row">
-    <h4>Reviews</h4>
-    <%= link_to "Add a Review", new_show_review_path(@show), class: "button" %>
-    <% @reviews.each do |review| %>
-    <div class="media-object">
-      <div class="media-object-section">
-        <div class="stacked button-group">
-          <% if current_user %>
-            <%= link_to "ʌ", review_votes_path(review, button: :upvote), method: :post, class: "button" %>
-            <%= link_to "v", review_votes_path(review, button: :downvote), method: :post, class: "button" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="media-object-section">Total votes: <%= review.total_votes %></div>
-      <div class="media-object-section">
-        <% if review.updated_at != review.created_at %>
-        <%= "Edited @ #{review.updated_at.
-        strftime("%B %d %Y")}" %>
-        <% end %>
-
-        Title: <%= review.title %>
-        <% if !current_user.nil? && (current_user.admin? ||
-          current_user == review.user) %>
-        <%= link_to "edit", edit_show_review_path(@show,review) %>
-        <%= link_to "Delete", review, method: :delete,
-        data: {confirm: "You Sure?"} %>
-        <% end %>
-        <br>
-        Description: <%= review.description %>
-        <br>
-        Rating: <%= review.rating %>
-      </div>
-    </div>
-    <% end %>
+    <div id="app"></div>
   </div>
 
 </div>

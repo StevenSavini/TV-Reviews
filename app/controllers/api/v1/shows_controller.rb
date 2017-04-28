@@ -8,6 +8,7 @@ class Api::V1::ShowsController < ApplicationController
       review_to_send[:title] = review.title
       review_to_send[:description] = review.description
       review_to_send[:rating] = review.rating
+      review_to_send[:total_votes] = review.total_votes
       @reviews << review_to_send
     end
     render json: { reviews: @reviews }

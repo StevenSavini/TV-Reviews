@@ -7,7 +7,7 @@ const App = (props) => {
   return (
     <Router history={browserHistory}>
       <Route path='/' >
-        <Route path="shows/:id/reviews/new" component={ReviewShowContainer} />
+        <Route path="shows/:id" component={ReviewShowContainer} />
       </Route>
     </Router>
   );
