@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
                                                               :email,
                                                               :avatar])
   end
+
 end

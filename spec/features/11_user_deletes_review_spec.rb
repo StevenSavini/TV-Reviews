@@ -20,15 +20,6 @@ feature "user deletes review" do
     )
   end
 
-  scenario "authenticated user deletes own review from TV show page" do
-    visit show_path(@game_of_thrones)
-
-    click_link "Delete"
-
-    expect(page).to have_content("Your review has been deleted")
-    expect(page).to_not have_content("Error deleting review.")
-  end
-
   scenario "unauthenticated user cannot see delete button on TV show page" do
     logout(:user)
 

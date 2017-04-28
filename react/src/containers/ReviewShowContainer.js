@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReviewShow from '../components/ReviewShow';
 import ReviewFormContainer from './ReviewFormContainer';
+import ReviewsContainer from './ReviewsContainer';
 
 class ReviewShowContainer extends Component {
   constructor(props) {
@@ -31,30 +32,26 @@ class ReviewShowContainer extends Component {
     })
     .then(response => response.json())
   .then(responseData => {
-    console.log(responseData)
     this.setState({ reviews: [...this.state.reviews, responseData.review] })
   })
 }
 
   render() {
-    let reviews = this.state.reviews.map(review => {
-      return(
-        <ReviewShow
-          id={review.id}
-          title={review.title}
-          description={review.description}
-          key={"review" + review.id}
-          rating={review.rating}
-         />
-      )
-    })
     return(
-      <div className="small-9 small-centered columns">
-        <ReviewFormContainer
-          addNewReview={this.addNewReview}
-          showId={this.props.params.id}
+      <div className="row">
+        <div className="small-6 columns">
+          <h2>Submit a Review</h2>
+          <ReviewFormContainer
+            addNewReview={this.addNewReview}
+            showId={this.props.params.id}
+            />
+        </div>
+        <div className="small-6 columns">
+          <ReviewsContainer
+            reviews={this.state.reviews}
+            showId={this.props.params.id}
           />
-        {reviews.reverse()}
+        </div>
       </div>
     )
   }

@@ -3,6 +3,7 @@ class ShowsController < ApplicationController
   def show
     @show = Show.find(params[:id])
     @reviews = @show.reviews.order("total_votes DESC")
+    Show.average_rating_calc(@show)
   end
 
   def index
