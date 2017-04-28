@@ -28,13 +28,10 @@ strong {
   list-style: none;
 }
 
-.upvote-button {
-  background-image: url(up_arrow.png);
-}
 
 .new-review-form {
   background-color: $body-background;
-  border: none;
+  border: 0;
 }
 
 .index-title {
